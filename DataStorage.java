@@ -23,7 +23,7 @@ import java.util.*;
 public class DataStorage {
     private String path;
     public DataStorage(String id){
-        path="./resource/";
+        path="./resource/record/";
         this.recordID=Integer.parseInt(id);
         try {
             this.ReadData();
@@ -31,16 +31,17 @@ public class DataStorage {
             e.printStackTrace();
         }
     }
-    public DataStorage(){ path="./resource/";}
+    public DataStorage(){ path="./resource/record/";}
     public DataStorage(int WhitePlayerid, int BlackPlayerid){
         boardflow.add(CT.initial());
         Random r = new Random();
-        recordID = r.nextInt(1000000)+10000000;
+        recordID = r.nextInt(10000000)+10000000;
         isFinish=false;
         this.WhithPlayerId=WhitePlayerid;
         this.BlackPlayerId=BlackPlayerid;
         this.date=new Date().toString();
         colorflow.add(true);
+        path="./resource/record/";
     }
     List<String> readline;
 
@@ -132,7 +133,7 @@ public class DataStorage {
         Date time = new Date();
 
         /* 写入Txt文件 */
-        File writename = new File("./resource/"+recordID+".txt"); // 相对路径，如果没有则要建立一个新的output。txt文件
+        File writename = new File(path+recordID+".txt"); // 相对路径，如果没有则要建立一个新的output。txt文件
         try {
             writename.createNewFile(); // 创建新文件
 
